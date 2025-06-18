@@ -1,28 +1,26 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import { StyleSheet, View, Text } from "react-native";
+import TodoInput from "./src/components/todoInput";
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
+function App(): React.JSX.Element {
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <NewAppScreen templateFileName="App.tsx" />
+    <View style = {styles.container}>
+      <Text style = {styles.headerText}>Todo App</Text>
+      <TodoInput/>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 20
   },
-});
+  headerText: {
+    fontSize: 24,
+    fontWeight : 'bold',
+    marginBottom : 20,
+    textAlign : 'center',
+  },
+})
 
-export default App;
+export default App
