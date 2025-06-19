@@ -27,13 +27,23 @@ const TodoEdit : React.FC<TodoEditProps> = ({todo,onSave,onCancel}) => {
                 onChangeText = {setText}
             />
             <View style={styles.buttonContainer}>
-                <TouchableOpacity onPress = {handleSave} style={styles.saveBtn}>
-                    <Text style={styles.btnText}>
+                <TouchableOpacity 
+                    onPress = {handleSave} 
+                    style={styles.saveBtn}
+                >
+                    <Text 
+                        style={styles.btnText}
+                    >
                        Save
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress = {onCancel} style = {styles.cancelBtn}>
-                    <Text style={styles.btnText}>
+                <TouchableOpacity 
+                    onPress = {onCancel} 
+                    style = {styles.cancelBtn}
+                >
+                    <Text 
+                        style={styles.btnText}
+                    >
                         Cancel
                     </Text>
                 </TouchableOpacity>

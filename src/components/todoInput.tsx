@@ -24,9 +24,15 @@ const TodoInput : React.FC<TodoInputProps>= ({onAddTodo}) => {
                 placeholder = "Add a new Todo"
                 onChangeText = {setText}
             />
-            <TouchableOpacity onPress = {handleAddTodo} style = {styles.addtodoBtn}>
-                <Text style = {styles.addtodoBtnText}>Add</Text>
-
+            <TouchableOpacity 
+                onPress = {handleAddTodo} 
+                style = {styles.addtodoBtn}
+            >
+                <Text 
+                    style = {styles.addtodoBtnText}
+                >
+                    Add
+                </Text>
             </TouchableOpacity>
         </View>
     )
