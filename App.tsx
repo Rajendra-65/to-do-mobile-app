@@ -4,32 +4,48 @@ import { useState } from "react";
 import TodoList from "./src/components/todoList";
 
 interface Todo {
-  id : string,
-  text : string,
-  completed : boolean,
+  id: string,
+  text: string,
+  completed: boolean,
 }
 
 function App(): React.JSX.Element {
 
-  const [todoList , setTodoList] = useState<Todo[]>([]);
+  const [todoList, setTodoList] = useState<Todo[]>([]);
 
-  console.log(todoList)
-
-  const addTodo = (text:string) => {
-    setTodoList([...todoList,{
-      id:Date.now().toString(),
+  const addTodo = (text: string) => {
+    setTodoList([...todoList, {
+      id: Date.now().toString(),
       text: text,
-      completed:false
+      completed: false
     }])
   }
 
-  console.log(todoList)
+  const deleteToDo = (id: string) => {
+    console.log(id);
+    setTodoList(
+      todoList.filter(item => item.id !== id)
+    )
+  }
+
+  const togleTodo = (id: string) => {
+    setTodoList(
+      todoList.map(item =>
+        item.id === id ? {
+          ...item,
+          completed: !item.completed
+        }
+        :
+          item
+      )
+    )
+  }
 
   return (
-    <View style = {styles.container}>
-      <Text style = {styles.headerText}>Todo App</Text>
-      <TodoInput onAddTodo = {addTodo} />
-      <TodoList todoList = {todoList} />
+    <View style={styles.container}>
+      <Text style={styles.headerText}>Todo App</Text>
+      <TodoInput onAddTodo={addTodo} />
+      <TodoList onToggleTodo={togleTodo} onDeleteTodo={deleteToDo} todoList={todoList} />
     </View>
   )
 }
@@ -41,9 +57,9 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 24,
-    fontWeight : 'bold',
-    marginBottom : 20,
-    textAlign : 'center',
+    fontWeight: 'bold',
+    marginBottom: 20,
+    textAlign: 'center',
   },
 })
 
