@@ -41,11 +41,30 @@ function App(): React.JSX.Element {
     )
   }
 
+  const editTodo = (id:string ,newText:string) => {
+    console.log(id,newText,"from app.tsx")
+    setTodoList (
+      todoList .map(item =>
+        item.id === id ?
+        {
+          ...item,
+          text : newText
+        }
+        : item
+      ),
+    )
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.headerText}>Todo App</Text>
       <TodoInput onAddTodo={addTodo} />
-      <TodoList onToggleTodo={togleTodo} onDeleteTodo={deleteToDo} todoList={todoList} />
+      <TodoList 
+        onToggleTodo={togleTodo} 
+        onEditTodo = {editTodo}
+        onDeleteTodo={deleteToDo} 
+        todoList={todoList} 
+      />
     </View>
   )
 }
