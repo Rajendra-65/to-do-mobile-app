@@ -12,6 +12,7 @@ interface Todo {
 function App(): React.JSX.Element {
 
   const [todoList, setTodoList] = useState<Todo[]>([]);
+  const [disableEdit ,setDisableEdit] = useState<boolean>(false)
 
   const addTodo = (text: string) => {
     setTodoList([...todoList, {
@@ -39,6 +40,7 @@ function App(): React.JSX.Element {
           item
       )
     )
+    setDisableEdit(!disableEdit)
   }
 
   const editTodo = (id:string ,newText:string) => {
@@ -64,6 +66,7 @@ function App(): React.JSX.Element {
         onEditTodo = {editTodo}
         onDeleteTodo={deleteToDo} 
         todoList={todoList} 
+        disableEdit = {disableEdit}
       />
     </View>
   )

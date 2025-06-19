@@ -8,9 +8,10 @@ interface TodoListProps {
     onDeleteTodo : (id:string) => void;
     onToggleTodo : (id:string) => void;
     onEditTodo : (id:string,newText:string) => void;
+    disableEdit : boolean ;
 }
 
-const TodoList:React.FC<TodoListProps>= ({todoList,onDeleteTodo,onToggleTodo,onEditTodo}) => {
+const TodoList:React.FC<TodoListProps>= ({todoList,onDeleteTodo,onToggleTodo,onEditTodo,disableEdit}) => {
     return(
         <ScrollView style = {styles.container}>
             {
@@ -21,6 +22,7 @@ const TodoList:React.FC<TodoListProps>= ({todoList,onDeleteTodo,onToggleTodo,onE
                         onToggle = {()=>onToggleTodo(todo?.id)}
                         onEdit = {newText => onEditTodo(todo?.id , newText)}
                         todo = {todo}
+                        disableEdit = {disableEdit}
                     />
                 )
             }
